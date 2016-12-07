@@ -18,6 +18,6 @@ def is_valid_sequence(wire_sequence):
     return is_valid
 INPUT1 = """white\nred\ngreen\nwhite"""
 INPUT2 = """white\norange\ngreen\nwhite"""
-GET_FLAVOR_TEXT = lambda is_valid: "Bomb defused" if is_valid else "Boom"
-print(GET_FLAVOR_TEXT(is_valid_sequence(INPUT1)))
-print(GET_FLAVOR_TEXT(is_valid_sequence(INPUT2)))
+GET_FLAVOR_TEXT = lambda input_text: "Bomb defused" if is_valid_sequence(input_text) else "Boom"
+print(GET_FLAVOR_TEXT(INPUT1))
+print(GET_FLAVOR_TEXT(INPUT2))
