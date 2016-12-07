@@ -9,12 +9,19 @@
 # that does the logic. I'm representing a set of tiles as a single string,
 # but you can represent it using whatever data structure you want.
 
-# Examples
-
 # scrabble("ladilmy", "daily") -> true
 # scrabble("eerriin", "eerie") -> false
 # scrabble("orrpgma", "program") -> true
 # scrabble("orppgma", "program") -> false
+
+# Optional 1
+# Handle blank tiles (represented by "?"). These are "wild card" tiles
+#  that can stand in for any single letter.
+
+# scrabble("pizza??", "pizzazz") -> true
+# scrabble("piizza?", "pizzazz") -> false
+# scrabble("a??????", "program") -> true
+# scrabble("b??????", "program") -> false
 
 def scrabble(pieces, to_find):
     found_word = True
@@ -23,13 +30,22 @@ def scrabble(pieces, to_find):
         for char in to_find:
             if char in pool:
                 pool.remove(char)
+            elif '?' in pool:
+                pool.remove('?')
             else:
                 found_word = False
     else:
         found_word = False
     return found_word
 
+print("Initial Challenge")
 print(scrabble("ladilmy", "daily"))
 print(scrabble("eerriin", "eerie"))
 print(scrabble("orrpgma", "program"))
 print(scrabble("orppgma", "program"))
+print()
+print("Optional 1")
+print(scrabble("pizza??", "pizzazz"))
+print(scrabble("piizza?", "pizzazz"))
+print(scrabble("a??????", "program"))
+print(scrabble("b??????", "program"))
